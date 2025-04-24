@@ -13,9 +13,9 @@
     <main class="container vh-100 d-flex justify-content-center align-items-center">
         <div class="col-6 mx-auto text-center px-5 py-5 border rounded bg-white">
             @if (Session::has('error'))
-                <div class="alert alert-danger" role="alert">
-                    {{ Session::get('error') }}
-                </div>
+            <div class="alert alert-danger" role="alert">
+                {{ Session::get('error') }}
+            </div>
             @endif
             <h1>Login</h1>
             <p>Silakan login dengan Akun Google yang kamu punya</p>

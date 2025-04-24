@@ -36,7 +36,7 @@ class authController extends Controller
             Auth::login($user);
             return redirect()->to('dashboard');
         } else {
-            return redirect()->to('auth') ->with('error', 'Email yang anda buat tidak terdaftar sehingga tidak bisa login menggunakan google');
+            return redirect()->to('auth')->with('error', 'Email yang anda buat tidak terdaftar sehingga tidak bisa login menggunakan google');
         }
     }
 
