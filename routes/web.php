@@ -1,9 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\authController;
 use Laravel\Socialite\Facades\Socialite;
-use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\halamanController;
+use App\Models\halaman;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,9 @@ Route::get('/auth/callback', [authController::class, 'callback'])->middleware('g
 
 Route::get('/auth/logout', [authController::class, 'logout']);
 
-Route::get('/dashboard', function () {
-    return view('dashboard.index');
-})->middleware('auth'); ;
+Route::prefix('dashboard')->middleware('auth')->group(
+    function () {
+        Route::get('/', [halamanController::class, 'index']);
+        Route::resource('halaman', halamanController::class);
+    }
+); 
