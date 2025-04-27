@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\riwayat;
 use Illuminate\Http\Request;
 
 class experienceController extends Controller
@@ -13,7 +14,8 @@ class experienceController extends Controller
      */
     public function index()
     {
-        //
+        $data =[];
+        return view('dashboard.experience.index')->with('data', $data);
     }
 
     /**
@@ -23,7 +25,7 @@ class experienceController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.experience.create');
     }
 
     /**
