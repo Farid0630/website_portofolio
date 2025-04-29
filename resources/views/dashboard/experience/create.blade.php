@@ -39,6 +39,7 @@
                 class="form-control form-control-sm"
                 name="tgl_mulai"
                 placeholder="dd/mm/yyyy"
+                value="{{Session::get('tgl_mulai')}}"
                 >
             </div>
             <div class="col-auto">Tanggal Akhir</div>
@@ -47,6 +48,7 @@
                 class="form-control form-control-sm"
                 name="tgl_akhir"
                 placeholder="dd/mm/yyyy"
+                value="{{Session::get('tgl_akhir')}}"
                 >
             </div>
         </div>

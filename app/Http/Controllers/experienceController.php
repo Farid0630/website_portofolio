@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\riwayat;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 
 class experienceController extends Controller
@@ -36,7 +37,34 @@ class experienceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Session::flash('judul', $request->judul);
+        Session::flash('info1', $request->info1);
+        Session::flash('tgl_mulai', $request->tgl_mulai);
+        Session::flash('tgl_akhir', $request->tgl_akhir);
+        Session::flash('isi', $request->isi);
+        $request->validate([
+            'judul' => 'required',
+            'info1' => 'required',
+            'tgl_mulai' => 'required',
+            'tgl_akhir' => 'required',
+            'isi' => 'required',
+        ],[
+            'judul.required' => 'Judul harus diisi',
+            'info1.required' => 'Nama Perusahaan Wajib diisi',
+            'tgl_mulai.required' => 'Tanggal Mulai Wajib diisi',
+            'isi.required' => 'Isi harus diisi',
+        ]);
+
+        $data = [
+            'judul' => $request->judul,
+            'info1' => $request->info1,
+            'tipe' => 'experience',
+            'tgl_mulai' => $request->tgl_mulai,
+            'tgl_akhir' => $request->tgl_akhir,
+            'isi' => $request->isi,
+        ];
+         riwayat::create($data);
+         return redirect()->route('experience.index')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
