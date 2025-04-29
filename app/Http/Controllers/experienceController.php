@@ -8,14 +8,21 @@ use Illuminate\Http\Request;
 
 class experienceController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    private $_tipe;
+    function __construct()
+    {
+        $this->_tipe='experience';
+    }  
+
+    // function __construct()
+    // {
+    //     $this->_tipe='experience';
+    // }
+
     public function index()
     {
-        $data =[];
+        $data = riwayat::where('tipe', $this->_tipe)->orderby('tgl_akhir', 'desc')->get() ;
         return view('dashboard.experience.index')->with('data', $data);
     }
 
@@ -58,7 +65,7 @@ class experienceController extends Controller
         $data = [
             'judul' => $request->judul,
             'info1' => $request->info1,
-            'tipe' => 'experience',
+            'tipe' => $this->_tipe,
             'tgl_mulai' => $request->tgl_mulai,
             'tgl_akhir' => $request->tgl_akhir,
             'isi' => $request->isi,
