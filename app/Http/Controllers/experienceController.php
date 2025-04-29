@@ -49,6 +49,7 @@ class experienceController extends Controller
         Session::flash('tgl_mulai', $request->tgl_mulai);
         Session::flash('tgl_akhir', $request->tgl_akhir);
         Session::flash('isi', $request->isi);
+
         $request->validate([
             'judul' => 'required',
             'info1' => 'required',
@@ -93,7 +94,8 @@ class experienceController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = riwayat::where('id',$id)->where('tipe', $this->_tipe)->first();
+        return view('dashboard.experience.edit')->with('data', $data);
     }
 
     /**
@@ -105,7 +107,29 @@ class experienceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $request->validate([
+            'judul' => 'required',
+            'info1' => 'required',
+            'tgl_mulai' => 'required',
+            'isi' => 'required',
+        ],[
+            'judul.required' => 'Judul harus diisi',
+            'info1.required' => 'Nama Perusahaan Wajib diisi',
+            'tgl_mulai.required' => 'Tanggal Mulai Wajib diisi',
+            'isi.required' => 'Isi harus diisi',
+        ]);
+
+        $data = [
+            'judul' => $request->judul,
+            'info1' => $request->info1,
+            'tipe' => $this->_tipe,
+            'tgl_mulai' => $request->tgl_mulai,
+            'tgl_akhir' => $request->tgl_akhir,
+            'isi' => $request->isi,
+        ];
+         riwayat::where('id', $id)->where('tipe', $this->_tipe)->update($data);
+         return redirect()->route('experience.index')->with('success', 'Data berhasil diubah');
     }
 
     /**
