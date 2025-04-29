@@ -140,6 +140,7 @@ class experienceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        riwayat::where('id', $id)->where('tipe', $this->_tipe)->delete();
+        return redirect()->route('experience.index')->with('success', 'Data berhasil dihapus');
     }
 }
