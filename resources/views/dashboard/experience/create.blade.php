@@ -41,14 +41,7 @@
                 placeholder="dd/mm/yyyy"
                 >
             </div>
-            <div class="col-auto">Tanggal Akhir</div>
-            <div class="col-auto">
-                <input type="date"
-                class="form-control form-control-sm"
-                name="tgl_akhir"
-                placeholder="dd/mm/yyyy"
-                >
-            </div>
+           
         </div>
     </div>
     
