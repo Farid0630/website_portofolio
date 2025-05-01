@@ -5,7 +5,16 @@
 <div class="pb-3"><a href="{{route('education.create')}}" class="btn btn-primary">Tambah Education</a></div>
 <div class="table-responsive">
     <table class="table table-striped">
-      
+        <thead>
+            <tr>
+                <th class="col-1">No.</th>
+                <th>Posisi</th>
+                <th>Nama Perusahaan</th>
+                <th>Tanggal Mulai</th>
+                <th>Tanggal Akhir</th>
+                <th class="col-2">Aksi</th>
+            </tr>
+        </thead>
         <tbody>
             <?php $no=1; ?>
             @foreach ($data as $item)
