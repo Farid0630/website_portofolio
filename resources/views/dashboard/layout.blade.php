@@ -68,6 +68,12 @@
               <span class="menu-title">Halaman</span>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('experience.index')}}">
+              <i class="mdi mdi-briefcase me-2-box-outline menu-icon"></i>
+              <span class="menu-title">Experience</span>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- partial -->
