@@ -9,6 +9,14 @@
         <tbody>
             <?php $no=1; ?>
             @foreach ($data as $item)
+                <tr>
+                    <th class="col-1">No.</th>
+                    <th>Posisi</th>
+                    <th>Nama Perusahaan</th>
+                    <th>Tanggal Mulai</th>
+                    <th>Tanggal Akhir</th>
+                    <th class="col-2">Aksi</th>
+                </tr>
             <tr>
                 <td>{{$no}}</td>
                 <td>{{$item->judul}}</td>
